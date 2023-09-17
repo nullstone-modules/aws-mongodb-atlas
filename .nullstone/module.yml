@@ -1,0 +1,13 @@
+org_name: nullstone
+name: mongodb-atlas
+friendly_name: MongoDB Atlas Cluster
+description: Provisions a MongoDB cluster on Atlas
+category: datastore
+subcategory: ""
+provider_types:
+    - aws
+platform: mongodb
+subplatform: ""
+type: ""
+appCategories: []
+is_public: true
