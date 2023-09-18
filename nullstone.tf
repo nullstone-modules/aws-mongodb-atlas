@@ -3,6 +3,9 @@ terraform {
     ns = {
       source = "nullstone-io/ns"
     }
+    mongodbatlas = {
+      source = "mongodb/mongodbatlas"
+    }
   }
 }
 
