@@ -1,12 +1,13 @@
 resource "mongodbatlas_advanced_cluster" "this" {
-  project_id   = var.atlas_project_id
-  name         = local.resource_name
-  cluster_type = "SHARDED"
+  project_id             = var.atlas_project_id
+  name                   = local.resource_name
+  mongo_db_major_version = var.mongodb_major_version
+  cluster_type           = "SHARDED"
+  backup_enabled         = true
+
   replication_specs {
     num_shards = var.number_of_shards
     region_configs {
-      mongo_db_major_version = var.mongodb_major_version
-      backup_enabled = true
       electable_specs {
         instance_size = var.cluster_tier
         node_count    = 3
@@ -45,5 +46,5 @@ resource "mongodbatlas_network_peering" "this" {
 # Accept the peering connection request
 resource "aws_vpc_peering_connection_accepter" "peer" {
   vpc_peering_connection_id = mongodbatlas_network_peering.this.connection_id
-  auto_accept = true
+  auto_accept               = true
 }
