@@ -10,6 +10,7 @@ variable "atlas_public_key" {
 
 variable "atlas_private_key" {
   type        = string
+  sensitive   = true
   description = "The private key used to authenticate to your MongoDB Atlas account"
 }
 

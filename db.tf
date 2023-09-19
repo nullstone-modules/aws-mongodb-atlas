@@ -1,13 +1,12 @@
 resource "mongodbatlas_advanced_cluster" "this" {
   project_id   = var.atlas_project_id
   name         = local.resource_name
-  cluster_type = "REPLICASET"
+  cluster_type = "SHARDED"
   replication_specs {
+    num_shards = var.number_of_shards
     region_configs {
-      mongodb_major_version = var.mongodb_major_version
-      num_shards = var.number_of_shards
-      cloud_backup = true
-      auto_scaling_disk_gb_enabled = true
+      mongo_db_major_version = var.mongodb_major_version
+      backup_enabled = true
       electable_specs {
         instance_size = var.cluster_tier
         node_count    = 3

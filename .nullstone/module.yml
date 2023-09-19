@@ -6,8 +6,8 @@ category: datastore
 subcategory: ""
 provider_types:
     - aws
-platform: mongodb
-subplatform: ""
+platform: mongo
+subplatform: atlas
 type: ""
 appCategories: []
 is_public: true
