@@ -36,7 +36,7 @@ resource "mongodbatlas_network_container" "this" {
 resource "mongodbatlas_network_peering" "this" {
   accepter_region_name   = data.aws_region.this.name
   project_id             = var.atlas_project_id
-  container_id           = mongodbatlas_advanced_cluster.this.replication_specs.container_id
+  container_id           = mongodbatlas_advanced_cluster.this.replication_specs[0].container_id
   provider_name          = "AWS"
   route_table_cidr_block = "192.168.0.0/24"
   vpc_id                 = local.vpc_id
