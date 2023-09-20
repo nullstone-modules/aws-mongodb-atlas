@@ -1,8 +1,3 @@
-variable "atlas_project_id" {
-  type        = string
-  description = "The ID of the Atlas project to create the cluster in"
-}
-
 variable "atlas_public_key" {
   type        = string
   description = "The public key used to authenticate to your MongoDB Atlas account"
@@ -12,6 +7,11 @@ variable "atlas_private_key" {
   type        = string
   sensitive   = true
   description = "The private key used to authenticate to your MongoDB Atlas account"
+}
+
+variable "atlas_project_id" {
+  type        = string
+  description = "The ID of the Atlas project to create the cluster in"
 }
 
 variable "mongodb_major_version" {

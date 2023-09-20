@@ -18,33 +18,27 @@ resource "mongodbatlas_advanced_cluster" "this" {
       }
       provider_name = "AWS"
       priority      = 7
-      region_name   = data.aws_region.this.name
+      region_name   = local.atlas_region_name
     }
   }
+
+  depends_on = [mongodbatlas_privatelink_endpoint_service.this]
 }
 
-# Container example provided but not always required,
-# see network_container documentation for details.
-resource "mongodbatlas_network_container" "this" {
-  project_id       = var.atlas_project_id
-  atlas_cidr_block = "10.8.0.0/21"
-  provider_name    = "AWS"
-  region_name      = data.aws_region.this.name
+locals {
+  atlas_region_name = upper(replace(data.aws_region.this.name, "-", "_"))
+  db_url = lookup(mongodbatlas_advanced_cluster.this.connection_strings[0].aws_private_link_srv, aws_vpc_endpoint.this.id)
+  db_endpoint = concat(split(db_url, "://")[1], ":27017")
 }
 
-# Create the peering connection request
-resource "mongodbatlas_network_peering" "this" {
-  accepter_region_name   = data.aws_region.this.name
-  project_id             = var.atlas_project_id
-  container_id           = mongodbatlas_advanced_cluster.this.replication_specs[0].container_id
-  provider_name          = "AWS"
-  route_table_cidr_block = "192.168.0.0/24"
-  vpc_id                 = local.vpc_id
-  aws_account_id         = data.aws_caller_identity.this.account_id
-}
+resource "mongodbatlas_database_user" "this" {
+  project_id         = var.atlas_project_id
+  username           = local.admin_username
+  password           = local.admin_password
+  auth_database_name = "admin"
 
-# Accept the peering connection request
-resource "aws_vpc_peering_connection_accepter" "peer" {
-  vpc_peering_connection_id = mongodbatlas_network_peering.this.connection_id
-  auto_accept               = true
+  roles {
+    database_name = "admin"
+    role_name     = "atlasAdmin"
+  }
 }
