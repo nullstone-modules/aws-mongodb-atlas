@@ -23,8 +23,6 @@ resource "mongodbatlas_advanced_cluster" "this" {
   }
 
   depends_on = [mongodbatlas_privatelink_endpoint_service.this]
-
-  tags = local.tags
 }
 
 locals {

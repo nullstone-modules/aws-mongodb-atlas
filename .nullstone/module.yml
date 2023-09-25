@@ -1,7 +1,7 @@
 org_name: nullstone
-name: mongodb-atlas
+name: aws-mongodb-atlas
 friendly_name: MongoDB Atlas Cluster
-description: Provisions a MongoDB cluster on Atlas
+description: Provisions a MongoDB cluster on Atlas with a Private Link connection to your AWS network
 category: datastore
 subcategory: ""
 provider_types:
