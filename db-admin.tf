@@ -4,6 +4,7 @@ module "db_admin" {
 
   name     = local.resource_name
   tags     = local.tags
+  protocol = local.db_protocol
   host     = local.db_host
   port     = local.db_port
   username = local.admin_username
