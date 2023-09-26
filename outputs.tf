@@ -23,6 +23,17 @@ output "db_admin_function_name" {
   description = "string ||| AWS Lambda Function name for database admin utility"
 }
 
+output "atlas_public_key" {
+  value       = var.atlas_public_key
+  description = "The public key used to authenticate to your MongoDB Atlas account"
+}
+
+output "atlas_private_key" {
+  value       = var.atlas_private_key
+  sensitive   = true
+  description = "The private key used to authenticate to your MongoDB Atlas account"
+}
+
 output "atlas_project_id" {
   value       = var.atlas_project_id
   sensitive   = true
