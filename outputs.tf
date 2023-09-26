@@ -3,9 +3,19 @@ output "db_instance_id" {
   description = "string ||| ID of the Mongo instance"
 }
 
+output "db_protocol" {
+  value       = local.db_protocol
+  description = "string ||| The protocol used to access the Mongo instance"
+}
+
 output "db_endpoint" {
   value       = local.db_endpoint
   description = "string ||| The endpoint URL to access the Mongo instance"
+}
+
+output "db_port" {
+  value       = local.db_port
+  description = "string ||| The port used to access the Mongo instance"
 }
 
 output "db_security_group_id" {
