@@ -28,6 +28,7 @@ resource "mongodbatlas_advanced_cluster" "this" {
 locals {
   atlas_region_name = upper(replace(data.aws_region.this.name, "-", "_"))
   db_url = lookup(mongodbatlas_advanced_cluster.this.connection_strings[0].aws_private_link_srv, aws_vpc_endpoint.this.id)
+  // TODO
   db_protocol = "mongodb+srv"
   db_host = split("://", local.db_url)[1]
   db_port = 27016

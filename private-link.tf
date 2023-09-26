@@ -11,6 +11,7 @@ resource "aws_vpc_endpoint" "this" {
   subnet_ids         = local.private_subnet_ids
   security_group_ids = [aws_security_group.this.id]
 
+  // TODO: add a name tag
   tags = local.tags
 }
 
