@@ -18,11 +18,6 @@ output "db_admin_secret_id" {
   description = "string ||| The name of the secret in AWS Secrets Manager containing the password"
 }
 
-output "db_admin_function_name" {
-  value       = module.db_admin.function_name
-  description = "string ||| AWS Lambda Function name for database admin utility"
-}
-
 output "atlas_public_key" {
   value       = var.atlas_public_key
   description = "The public key used to authenticate to your MongoDB Atlas account"
