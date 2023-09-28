@@ -28,19 +28,17 @@ output "db_admin_secret_id" {
   description = "string ||| The name of the secret in AWS Secrets Manager containing the password"
 }
 
-output "atlas_public_key" {
-  value       = var.atlas_public_key
+output "atlas_public_key_secret_id" {
+  value       = aws_secretsmanager_secret.atlas_public_key.name
   description = "The public key used to authenticate to your MongoDB Atlas account"
 }
 
-output "atlas_private_key" {
-  value       = var.atlas_private_key
-  sensitive   = true
+output "atlas_private_key_secret_id" {
+  value       = aws_secretsmanager_secret.atlas_private_key.name
   description = "The private key used to authenticate to your MongoDB Atlas account"
 }
 
 output "atlas_project_id" {
   value       = var.atlas_project_id
-  sensitive   = true
   description = "string ||| The ID of the Atlas project"
 }
