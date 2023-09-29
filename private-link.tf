@@ -10,9 +10,7 @@ resource "aws_vpc_endpoint" "this" {
   vpc_endpoint_type  = "Interface"
   subnet_ids         = local.private_subnet_ids
   security_group_ids = [aws_security_group.this.id]
-
-  // TODO: add a name tag
-  tags = local.tags
+  tags               = merge(local.tags, { Name = local.resource_name })
 }
 
 resource "mongodbatlas_privatelink_endpoint_service" "this" {
