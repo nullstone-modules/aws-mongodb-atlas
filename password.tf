@@ -1,5 +1,3 @@
-// TODO: We should move to IAM Authentication instead of creating a password
-
 locals {
   admin_username = "admin"
   admin_password = random_password.this.result
