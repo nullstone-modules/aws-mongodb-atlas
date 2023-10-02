@@ -1,7 +1,7 @@
 # MongoDB Atlas 
 
 This module creates a MongoDB cluster as a managed service on Mongo Atlas.
-Mongo Atlas is a man aged service offering provided by the creators of MongoDB.
+Mongo Atlas is a managed service offering provided by the creators of MongoDB.
 
 ## When to use
 
