@@ -29,12 +29,12 @@ resource "mongodbatlas_advanced_cluster" "this" {
 }
 
 locals {
-  replica_set_list     = ["M10", "M20"]
-  cluster_type         = contains(local.replica_set_list, var.cluster_tier) ? "REPLICASET" : "SHARDED"
-  atlas_region_name    = upper(replace(data.aws_region.this.name, "-", "_"))
-  db_endpoint          = lookup(mongodbatlas_advanced_cluster.this.connection_strings[0].aws_private_link_srv, aws_vpc_endpoint.this.id)
-  db_protocol          = split("://", local.db_endpoint)[0]
-  db_port              = local.db_protocol == "mongodb+srv" ? 27016 : 27017
+  replica_set_list  = ["M10", "M20"]
+  cluster_type      = contains(local.replica_set_list, var.cluster_tier) ? "REPLICASET" : "SHARDED"
+  atlas_region_name = upper(replace(data.aws_region.this.name, "-", "_"))
+  db_endpoint       = lookup(mongodbatlas_advanced_cluster.this.connection_strings[0].aws_private_link_srv, aws_vpc_endpoint.this.id)
+  db_protocol       = split("://", local.db_endpoint)[0]
+  db_port           = local.db_protocol == "mongodb+srv" ? 27016 : 27017
 }
 
 resource "mongodbatlas_database_user" "this" {
