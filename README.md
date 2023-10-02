@@ -35,4 +35,4 @@ This is the recommended and most secure way to connect to your Mongo Atlas clust
 
 ## Logs
 
-This module relies on the Atlas service for logs. See your provider to 
+Logs for this infrastructure can be access through Atlas.
