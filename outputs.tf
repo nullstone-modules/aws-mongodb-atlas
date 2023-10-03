@@ -42,3 +42,8 @@ output "atlas_project_id" {
   value       = var.atlas_project_id
   description = "string ||| The ID of the Atlas project"
 }
+
+output "atlas_private_link_id" {
+  value       = mongodbatlas_privatelink_endpoint.this.id
+  description = "string ||| The ID of the Atlas private link"
+}
