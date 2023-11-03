@@ -33,6 +33,11 @@ It does so with a Private Link Endpoint. See the Mongo Atlas guide on [Private L
 In order to establish this secure connection, an AWS VPC Endpoint from your AWS account is connected to a Mongo Atlas Private Link Endpoint.
 This is the recommended and most secure way to connect to your Mongo Atlas cluster. It does make this module AWS specific.
 
+## Connections
+
+This module requires two connections: one to your AWS network and one to your Atlas project.
+It will create a secure and performant connection between your AWS network and the Private Link endpoint from your Atlas project.
+
 ## Logs
 
 Logs for this infrastructure can be access through Atlas.

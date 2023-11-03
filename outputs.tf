@@ -29,21 +29,21 @@ output "db_admin_secret_id" {
 }
 
 output "atlas_public_key_secret_id" {
-  value       = aws_secretsmanager_secret.atlas_public_key.name
+  value       = local.atlas_public_key_secret_id
   description = "The public key used to authenticate to your MongoDB Atlas account"
 }
 
 output "atlas_private_key_secret_id" {
-  value       = aws_secretsmanager_secret.atlas_private_key.name
+  value       = local.atlas_private_key_secret_id
   description = "The private key used to authenticate to your MongoDB Atlas account"
 }
 
 output "atlas_project_id" {
-  value       = var.atlas_project_id
+  value       = local.atlas_project_id
   description = "string ||| The ID of the Atlas project"
 }
 
 output "atlas_private_link_id" {
-  value       = mongodbatlas_privatelink_endpoint.this.id
+  value       = local.private_link_id
   description = "string ||| The ID of the Atlas private link"
 }
